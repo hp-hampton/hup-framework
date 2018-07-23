@@ -41,23 +41,24 @@ public class JsonRpcServerAutoConfiguration implements BeanClassLoaderAware, Bea
             if (serviceClassName == null) {
                 continue;
             }
-            //
+            //根据入参，查看参数是否有继承接口，若继承了接口切接口是自己定义需要暴露的接口则返回
             Class serviceInterface = getJsonRpcServiceInterface(serviceClassName);
             if (serviceInterface == null) {
                 continue;
             }
-            //
+            //获取serviceInterface上所有方法，针对每个方法调用filter实现匹配检查，如果匹配上，调用MethodCallback回调方法。
+            // 该方法会递归向上查询所有父类和实现的接口上的所有方法并处理；
             ReflectionUtils.doWithMethods(serviceInterface, method -> {
+                //每一个方法都会拥有一个相对应的bean
                 BeanDefinitionBuilder builder = BeanDefinitionBuilder.genericBeanDefinition(JsonRpcServiceExporter.class)
                         .addPropertyValue("serviceMethod", method)
                         .addPropertyValue("serviceInterface", serviceInterface)
                         .addPropertyValue("service", new RuntimeBeanReference(beanDefinitionName));
-                //
+                //组装一个请求地址
                 String serviceExporterBeanName = JsonRpcServerRegistrar.getBasePath() + JsonRpcUtil.generateServiceUrl(method);
-                //
+                //注册
                 registry.registerBeanDefinition(serviceExporterBeanName, builder.getBeanDefinition());
             }, method -> {
-                //
                 return method.getDeclaringClass().getName().contains("com.hup");
             });
         }
@@ -69,18 +70,15 @@ public class JsonRpcServerAutoConfiguration implements BeanClassLoaderAware, Bea
     }
 
     private Class getJsonRpcServiceInterface(String serviceClassName) {
-        //
         try {
             Class serviceClass = ClassUtils.forName(serviceClassName, beanClassLoader);
-            //
             for (Class serviceClassInterface : serviceClass.getInterfaces()) {
+                //自定义需要暴露的包路径下的类
                 for (Class serviceInterface : JsonRpcServerRegistrar.getServiceInterfaces()) {
-                    //
                     if (serviceClassInterface == serviceInterface) {
                         return serviceClassInterface;
                     }
                 }
-                //
             }
         } catch (ClassNotFoundException e) {
             log.error(e.getMessage(), e);

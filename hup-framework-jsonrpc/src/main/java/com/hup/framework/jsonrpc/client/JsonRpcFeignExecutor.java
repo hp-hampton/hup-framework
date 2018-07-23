@@ -31,19 +31,21 @@ public class JsonRpcFeignExecutor implements HttpInvokerRequestExecutor, BeanFac
     }
 
     @Override
+    //RemoteInvocation invocation 来自JsonRpcProxyFactoryBean
     public RemoteInvocationResult executeRequest(HttpInvokerClientConfiguration config, RemoteInvocation invocation) throws Exception {
-        //
+        //获取请求的类
         Class serviceInterface = ((HttpInvokerClientInterceptor) config).getServiceInterface();
+        //获取请求的接口中是否有这个请求方法
         Method serviceMethod = ReflectionUtils.findMethod(serviceInterface, invocation.getMethodName(), invocation.getParameterTypes());
         String requestPath = config.getServiceUrl() + JsonRpcUtil.generateServiceUrl(serviceMethod);
-        //
+        //获取请求参数
         byte[] requestBytes = (byte[]) invocation.getArguments()[0];
         log.info("jsonrpc remote request url:{}, parmeters:{}", requestPath, new String(requestBytes));
+        //获取响应字节
         byte[] responseBytes = getJsonRpcFeignClient().execute(requestPath, requestBytes);
-        //
+        //将获取的字节存入RemoteInvocationResult，返回给上层
         RemoteInvocationResult invocationResult = new RemoteInvocationResult();
         invocationResult.setValue(responseBytes);
-        //
         return invocationResult;
     }
 

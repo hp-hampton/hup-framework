@@ -34,10 +34,8 @@ public class JsonRpcProxyFactoryBean extends HttpInvokerProxyFactoryBean {
     @Override
     public void afterPropertiesSet() {
         super.afterPropertiesSet();
-        //
         SimpleModule simpleModule = new SimpleModule();
         simpleModule.addDeserializer(Object.class, new JsonRpcResponseResultDeserializer());
-        //
         this.objectMapper = new ObjectMapper()
                 .registerModule(simpleModule)
                 .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
@@ -58,17 +56,13 @@ public class JsonRpcProxyFactoryBean extends HttpInvokerProxyFactoryBean {
         invocation.setArguments(new Object[]{requestBytes});
         //请求调用远程方法，获取返回结果
         RemoteInvocationResult result = super.executeRequest(invocation);
-        //
         byte[] responseBytes = (byte[]) result.getValue();
-        //
         Method method = ReflectionUtils.findMethod(getServiceInterface(), invocation.getMethodName(), invocation.getParameterTypes());
         //json反序列Response，在readValue中使用，若不加serialization里面的正反序列化类在获取出来的结果是map类型
         JsonRpcContext.init(method);
         JsonRpcResponse jsonRpcResponse = getObjectMapper().readValue(responseBytes, JsonRpcResponse.class);
         JsonRpcContext.clear();
-        //
         log.info("JsonRpcClient 调用响应 {}", jsonRpcResponse);
-        //
         JsonRpcResponse.Error error = jsonRpcResponse.getError();
         if (error == null) {
             result.setValue(jsonRpcResponse.getResult());
@@ -79,7 +73,6 @@ public class JsonRpcProxyFactoryBean extends HttpInvokerProxyFactoryBean {
                 result.setException(new RemoteAccessException(error.toString()));
             }
         }
-        //
         return result;
     }
 
