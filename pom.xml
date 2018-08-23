@@ -62,7 +62,7 @@
         <dependencies>
             <dependency>
                 <groupId>com.hup</groupId>
-                <artifactId>definition-bom</artifactId>
+                <artifactId>framework-bom</artifactId>
                 <version>${project.version}</version>
                 <scope>import</scope>
                 <type>pom</type>

@@ -4,15 +4,12 @@ import com.hup.framework.openapi.ApiResponseBody;
 import com.hup.framework.openapi.Interceptor.OpenApiInterceptor;
 import com.hup.framework.support.exception.DefinitionBusinessException;
 import com.hup.framework.support.exception.SystemException;
-import lombok.extern.log4j.Log4j;
-import org.springframework.core.annotation.Order;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.nio.file.AccessDeniedException;
 
 @RestControllerAdvice
-@Log4j
 public class CommonExceptionAdvice {
 
     @ExceptionHandler(value = Exception.class)
@@ -30,7 +27,7 @@ public class CommonExceptionAdvice {
                         DefinitionBusinessException.sys(SystemException.SYSTEM_EXCEPTION).cause(exception).build();
             }
         }
-        log.error(definitionBusinessException.toString(), definitionBusinessException);
+       // log(definitionBusinessException.toString(), definitionBusinessException);
         return ApiResponseBody.builder().success(false).
                 code(definitionBusinessException.getCode()).message(definitionBusinessException.getMessage()).build();
     }

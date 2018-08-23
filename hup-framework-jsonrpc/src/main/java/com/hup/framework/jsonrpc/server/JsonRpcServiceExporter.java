@@ -55,7 +55,6 @@ public class JsonRpcServiceExporter extends HttpInvokerServiceExporter {
     }
 
 
-
     /**
      * HttpInvokerServiceExporter类中
      * RemoteInvocation invocation = readRemoteInvocation(request);
@@ -96,6 +95,7 @@ public class JsonRpcServiceExporter extends HttpInvokerServiceExporter {
 
     @Override
     public void afterPropertiesSet() {
+        //在这个父类的方法中会动态代理service的实现类，其主要的目的是加个Proxy的拦截器，方便后续加其他的拦截器
         super.afterPropertiesSet();
         //
         setContentType(MediaType.APPLICATION_JSON_UTF8_VALUE);
