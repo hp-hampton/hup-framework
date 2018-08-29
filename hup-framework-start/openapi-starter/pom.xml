@@ -9,12 +9,12 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>open-api-start</artifactId>
+    <artifactId>openapi-starter</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>com.hup</groupId>
-            <artifactId>hup-framework.openapi</artifactId>
+            <artifactId>hup-framework-openapi</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
