@@ -1,4 +1,4 @@
-package com.hup.framework.openapi.Interceptor;
+package com.hup.framework.advice.Interceptor;
 
 import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;

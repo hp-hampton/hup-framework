@@ -1,4 +1,4 @@
-package com.hup.framework.openapi.method;
+package com.hup.framework.advice.method;
 
 import com.hup.framework.openapi.ApiResponseBody;
 import com.hup.framework.openapi.Interceptor.OpenApiInterceptor;

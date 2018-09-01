@@ -1,4 +1,4 @@
-package com.hup.framework.openapi;
+package com.hup.framework.advice;
 
 import lombok.Builder;
 import lombok.Data;

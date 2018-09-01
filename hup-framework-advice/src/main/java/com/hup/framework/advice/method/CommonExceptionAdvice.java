@@ -1,7 +1,7 @@
-package com.hup.framework.openapi.method;
+package com.hup.framework.advice.method;
 
-import com.hup.framework.openapi.ApiResponseBody;
-import com.hup.framework.openapi.Interceptor.OpenApiInterceptor;
+import com.hup.framework.advice.ApiResponseBody;
+import com.hup.framework.advice.Interceptor.OpenApiInterceptor;
 import com.hup.framework.support.exception.DefinitionBusinessException;
 import com.hup.framework.support.exception.SystemException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -27,7 +27,7 @@ public class CommonExceptionAdvice {
                         DefinitionBusinessException.sys(SystemException.SYSTEM_EXCEPTION).cause(exception).build();
             }
         }
-       // log(definitionBusinessException.toString(), definitionBusinessException);
+        // log(definitionBusinessException.toString(), definitionBusinessException);
         return ApiResponseBody.builder().success(false).
                 code(definitionBusinessException.getCode()).message(definitionBusinessException.getMessage()).build();
     }

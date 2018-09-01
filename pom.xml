@@ -8,12 +8,12 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>hup-framework-openapi</module>
         <module>hup-framework-start</module>
         <module>hup-framework-page-model</module>
         <module>hup-framework-bom</module>
         <module>hup-framework-jsonrpc</module>
         <module>hup-framework-support</module>
+        <module>hup-framework-advice</module>
     </modules>
 
 
