@@ -1,7 +1,8 @@
 package com.hup.framework.advice.method;
 
-import com.hup.framework.openapi.ApiResponseBody;
-import com.hup.framework.openapi.Interceptor.OpenApiInterceptor;
+
+import com.hup.framework.advice.ApiResponseBody;
+import com.hup.framework.advice.Interceptor.OpenApiInterceptor;
 import org.springframework.core.MethodParameter;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.MediaType;
