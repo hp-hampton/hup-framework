@@ -12,7 +12,6 @@
     <artifactId>hup-framework-start</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>openapi-starter</module>
         <module>jsonrpc-starter</module>
         <module>advice-starter</module>
     </modules>
