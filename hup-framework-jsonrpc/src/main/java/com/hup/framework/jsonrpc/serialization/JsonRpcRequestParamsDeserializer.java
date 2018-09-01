@@ -21,7 +21,7 @@ public class JsonRpcRequestParamsDeserializer extends JsonDeserializer<Object[]>
     @Override
     public Object[] deserialize(JsonParser p, DeserializationContext ctxt) throws IOException, JsonProcessingException {
         if(p.currentToken()==JsonToken.START_ARRAY) {
-            // start process array
+            // starter process array
             p.nextToken();
         }
         //

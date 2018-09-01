@@ -1,8 +1,8 @@
-package com.hup.framework.openapi.start;
+package com.hup.framework.advice.start;
 
-import com.hup.framework.openapi.Interceptor.OpenApiInterceptor;
-import com.hup.framework.openapi.method.CommonExceptionAdvice;
-import com.hup.framework.openapi.method.DefinitionResponseBodyAdvice;
+import com.hup.framework.advice.Interceptor.OpenApiInterceptor;
+import com.hup.framework.advice.method.CommonExceptionAdvice;
+import com.hup.framework.advice.method.DefinitionResponseBodyAdvice;
 import io.swagger.annotations.Api;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.context.annotation.Bean;
@@ -20,7 +20,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration
 @EnableSwagger2
 @ConditionalOnClass(Docket.class)
-public class OpenApiAutoConfiguration extends WebMvcConfigurerAdapter {
+public class AdviceAutoConfiguration extends WebMvcConfigurerAdapter {
 
     @Configuration
     class SpringFoxConfiguration extends WebMvcConfigurerAdapter {

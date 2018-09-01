@@ -1,4 +1,4 @@
-package com.hup.framework.jsonrpc.start;
+package com.hup.framework.jsonrpc.starter;
 
 import com.hup.framework.jsonrpc.JsonRpcUtil;
 import com.hup.framework.jsonrpc.server.JsonRpcServerRegistrar;

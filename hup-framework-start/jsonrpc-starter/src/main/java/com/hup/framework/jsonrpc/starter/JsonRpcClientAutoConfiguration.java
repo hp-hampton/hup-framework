@@ -1,4 +1,4 @@
-package com.hup.framework.jsonrpc.start;
+package com.hup.framework.jsonrpc.starter;
 
 import com.hup.framework.jsonrpc.client.JsonRpcClient;
 import com.hup.framework.jsonrpc.client.JsonRpcFeignClient;
