@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @Slf4j
-public class OpenApiInterceptor extends HandlerInterceptorAdapter {
+public class AdviceInterceptor extends HandlerInterceptorAdapter {
 
     private static final ThreadLocal<Boolean> openApiLocal = ThreadLocal.withInitial(() -> false);
 

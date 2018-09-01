@@ -1,7 +1,7 @@
 package com.hup.framework.advice.method;
 
 import com.hup.framework.advice.ApiResponseBody;
-import com.hup.framework.advice.Interceptor.OpenApiInterceptor;
+import com.hup.framework.advice.Interceptor.AdviceInterceptor;
 import com.hup.framework.support.exception.DefinitionBusinessException;
 import com.hup.framework.support.exception.SystemException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -14,7 +14,7 @@ public class CommonExceptionAdvice {
 
     @ExceptionHandler(value = Exception.class)
     public ApiResponseBody allExceptionHandler(Exception exception) throws Exception {
-        if (!OpenApiInterceptor.isOpenApi()) {
+        if (!AdviceInterceptor.isOpenApi()) {
             throw exception;
         }
         DefinitionBusinessException definitionBusinessException = findDefinitionBusinessException(exception);

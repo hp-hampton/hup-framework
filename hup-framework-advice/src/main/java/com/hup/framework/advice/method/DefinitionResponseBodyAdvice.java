@@ -2,7 +2,7 @@ package com.hup.framework.advice.method;
 
 
 import com.hup.framework.advice.ApiResponseBody;
-import com.hup.framework.advice.Interceptor.OpenApiInterceptor;
+import com.hup.framework.advice.Interceptor.AdviceInterceptor;
 import org.springframework.core.MethodParameter;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.MediaType;
@@ -18,7 +18,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 public class DefinitionResponseBodyAdvice implements ResponseBodyAdvice<Object> {
     @Override
     public boolean supports(MethodParameter returnType, Class converterType) {
-        return OpenApiInterceptor.isOpenApi();
+        return AdviceInterceptor.isOpenApi();
     }
 
     @Override
