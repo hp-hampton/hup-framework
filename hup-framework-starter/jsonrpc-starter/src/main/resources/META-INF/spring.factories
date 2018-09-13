@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.hup.framework.jsonrpc.starter.JsonRpcServerAutoConfiguration,\
+  com.hup.framework.jsonrpc.starter.JsonRpcClientAutoConfiguration

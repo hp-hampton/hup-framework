@@ -15,12 +15,17 @@
         <dependencies>
             <dependency>
                 <groupId>com.hup</groupId>
-                <artifactId>hup-framework-start</artifactId>
+                <artifactId>advice-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.hup</groupId>
                 <artifactId>hup-framework-page-model</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.hup</groupId>
+                <artifactId>jsonrpc-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>
         </dependencies>
