@@ -53,7 +53,7 @@ public class AdviceAutoConfiguration {
     @Bean
     @Order(Ordered.HIGHEST_PRECEDENCE)
     public WebMvcConfigurer openApiConfigurer() {
-        return new WebMvcConfigurerAdapter() {
+        return new WebMvcConfigurer() {
             @Override
             public void addInterceptors(InterceptorRegistry registry) {
                 registry.addInterceptor(new AdviceInterceptor());
