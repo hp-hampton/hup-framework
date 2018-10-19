@@ -1,4 +1,4 @@
-package com.hup.framework.advice.start;
+package com.hup.framework.advice.starter;
 
 import com.hup.framework.advice.Interceptor.AdviceInterceptor;
 import com.hup.framework.advice.method.CommonExceptionAdvice;
@@ -11,7 +11,6 @@ import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
